@@ -24,6 +24,7 @@ public class LessonService {
         if (course.isEmpty()){
             throw new RuntimeException("Invalid course id");
         }
+
         Lesson lesson = new Lesson();
         lesson.setName(lessonDto.getName());
         lesson.setDuration(lessonDto.getDuration());
