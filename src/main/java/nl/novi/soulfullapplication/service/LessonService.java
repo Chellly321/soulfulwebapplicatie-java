@@ -8,6 +8,7 @@ import nl.novi.soulfullapplication.repository.LessonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,9 +20,22 @@ public class LessonService {
     @Autowired
     CourseRepository courseRepository;
 
-    public Lesson addLesson(LessonDto lessonDto){
+    public Lesson getLesson(long id) {
+        return lessonRepository.findById(id).get();
+    }
+
+    public List<Lesson> getLessons(long courseId) {
+        Optional<Course> course = courseRepository.findById(courseId);
+        if (course.isEmpty()) {
+            throw new RuntimeException("Wrong courseId");
+        }
+
+        return lessonRepository.findByCourse(course.get());
+    }
+
+    public Lesson addLesson(LessonDto lessonDto) {
         Optional<Course> course = courseRepository.findById(lessonDto.getCourseId());
-        if (course.isEmpty()){
+        if (course.isEmpty()) {
             throw new RuntimeException("Invalid course id");
         }
 

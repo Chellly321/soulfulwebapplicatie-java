@@ -1,16 +1,13 @@
 package nl.novi.soulfullapplication.controller;
 
 import nl.novi.soulfullapplication.dto.LessonDto;
-import nl.novi.soulfullapplication.model.Course;
 import nl.novi.soulfullapplication.model.Lesson;
-import nl.novi.soulfullapplication.service.CourseService;
 import nl.novi.soulfullapplication.service.LessonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class LessonController {
@@ -18,9 +15,22 @@ public class LessonController {
     LessonService lessonService;
 
     @PostMapping("/lesson")
-    public ResponseEntity<Lesson> addLesson(@RequestBody LessonDto lessonDto){
+    public ResponseEntity<Lesson> addLesson(@RequestBody LessonDto lessonDto) {
         Lesson result = lessonService.addLesson(lessonDto);
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/lesson/{id}")
+    public ResponseEntity<Lesson> getLesson(@PathVariable("id") long id) {
+        Lesson lesson = lessonService.getLesson(id);
+        return ResponseEntity.ok(lesson);
     }
+
+    @GetMapping("/lesson/bycourse/{courseId}")
+    public ResponseEntity<List<Lesson>> getLessons(@PathVariable("courseId") long id) {
+        List<Lesson> lesson = lessonService.getLessons(id);
+        return ResponseEntity.ok(lesson);
+    }
+
+
+}

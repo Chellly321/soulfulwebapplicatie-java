@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class CourseController {
 
@@ -13,14 +15,27 @@ public class CourseController {
     CourseService courseService;
 
     @PostMapping("/course")
-    public ResponseEntity<Course> addCourse(@RequestBody Course course){
+    public ResponseEntity<Course> addCourse(@RequestBody Course course) {
         Course result = courseService.addCourse(course);
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("{course}")
-    public ResponseEntity<Object> getCourse(@PathVariable("course") long id){
+    @GetMapping("/course/{id}")
+    public ResponseEntity<Object> getCourse(@PathVariable("id") long id) {
         return ResponseEntity.ok().body(courseService.getCourse(id));
+    }
+
+    //loclahost:8080/course/buy?userid=1&courseid=2
+    @PostMapping("/course/buy")
+    public ResponseEntity<String> buyCourse(@RequestParam("userid") Long userId, @RequestParam("courseid") Long courseId) {
+        courseService.buyCourse(userId, courseId);
+        return ResponseEntity.ok("You bought the course successfully");
+    }
+
+    @GetMapping("/mycourses")
+    public ResponseEntity<List<Course>> showMyCourses(@RequestParam("userid") Long userId) {
+        List<Course> courses = courseService.showMyCourses(userId);
+        return ResponseEntity.ok(courses);
     }
 
 }
