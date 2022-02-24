@@ -1,22 +1,49 @@
 package nl.novi.soulfullapplication.controller;
 
+import nl.novi.soulfullapplication.configuration.TokenUtil;
+import nl.novi.soulfullapplication.dto.Token;
+import nl.novi.soulfullapplication.dto.LoginDto;
 import nl.novi.soulfullapplication.model.User;
 import nl.novi.soulfullapplication.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private AuthenticationManager authenticationManager;
 
-    @PostMapping("/user")
-    public ResponseEntity<User> adduser(@RequestBody User user) {
-        User result = userService.addUser(user);
-        return ResponseEntity.ok(result);
+    @Autowired
+    private TokenUtil jwtTokenUtil;
+
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value = "users/login", method = RequestMethod.POST)
+    public ResponseEntity<?> login(@RequestBody LoginDto loginDto) throws AuthenticationException {
+        // validate username and password
+        final Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        loginDto.getUsername(),
+                        loginDto.getPassword()
+                )
+        );
+        // if validation result in success, set the authentication object to context
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        // generate a jwt token from authentication object
+        final String token = jwtTokenUtil.generateToken(authentication);
+        return ResponseEntity.ok(new Token(token));
+    }
+
+    @RequestMapping(value = "users/register", method = RequestMethod.POST)
+    public User registerUser(@RequestBody User user) {
+        return userService.save(user);
     }
 }

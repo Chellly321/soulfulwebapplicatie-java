@@ -7,6 +7,7 @@ import nl.novi.soulfullapplication.repository.CourseRepository;
 import nl.novi.soulfullapplication.repository.PurchaseRepository;
 import nl.novi.soulfullapplication.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -34,6 +35,10 @@ public class CourseService {
     }
 
     public void buyCourse(long userId, long courseId) {
+        // Mockito.when().thenReturn();
+        // Mockito.doNothing().when();
+        // Course course = new Course();
+        // Mockito.when(courseRepository.findById(courseId)).thenReturn(Optional.of(course));
         Optional<Course> course = courseRepository.findById(courseId);
         if (course.isEmpty()) {
             throw new RuntimeException("CourseId is wrong.");
@@ -80,4 +85,10 @@ public class CourseService {
         }
         return myCourse;
     }
+
+    public void deleteCourse(long id) {
+        courseRepository.deleteById(id);
+    }
+
+
 }

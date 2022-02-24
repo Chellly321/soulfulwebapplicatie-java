@@ -6,6 +6,8 @@ import nl.novi.soulfullapplication.model.Lesson;
 import nl.novi.soulfullapplication.repository.CourseRepository;
 import nl.novi.soulfullapplication.repository.LessonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,6 +33,10 @@ public class LessonService {
         }
 
         return lessonRepository.findByCourse(course.get());
+    }
+
+    public void deleteLesson(long id) {
+        lessonRepository.deleteById(id);
     }
 
     public Lesson addLesson(LessonDto lessonDto) {

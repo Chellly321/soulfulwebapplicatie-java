@@ -25,17 +25,20 @@ public class CourseController {
         return ResponseEntity.ok().body(courseService.getCourse(id));
     }
 
-    //loclahost:8080/course/buy?userid=1&courseid=2
     @PostMapping("/course/buy")
     public ResponseEntity<String> buyCourse(@RequestParam("userid") Long userId, @RequestParam("courseid") Long courseId) {
         courseService.buyCourse(userId, courseId);
         return ResponseEntity.ok("You bought the course successfully");
     }
-
     @GetMapping("/mycourses")
     public ResponseEntity<List<Course>> showMyCourses(@RequestParam("userid") Long userId) {
         List<Course> courses = courseService.showMyCourses(userId);
         return ResponseEntity.ok(courses);
     }
 
+    @DeleteMapping("/course/{id}")
+    public ResponseEntity<String> deleteCourse(@PathVariable long id) {
+        courseService.deleteCourse(id);
+        return ResponseEntity.noContent().build();
+    }
 }

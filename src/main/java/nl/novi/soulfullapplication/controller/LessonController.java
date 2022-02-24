@@ -32,5 +32,11 @@ public class LessonController {
         return ResponseEntity.ok(lesson);
     }
 
+    @DeleteMapping("/lesson/{id}")
+    public ResponseEntity<String> deleteLesson(@PathVariable long id) {
+        lessonService.deleteLesson(id);
+        return ResponseEntity.ok("Lesson has been deleted!");
+    }
+
 
 }
