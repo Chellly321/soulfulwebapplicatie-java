@@ -14,5 +14,5 @@ public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
     Optional<Purchase> findByCourseAndUser(Course course, User user);
 
     List<Purchase> findByUser(User user);
-    // select * from purchase where course =  ? and user = ?
+
 }
