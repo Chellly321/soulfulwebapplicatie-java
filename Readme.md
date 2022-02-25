@@ -105,7 +105,9 @@ Choose the item you want to import and press open.
 Now you can test if everything is functioning in the backend correctly.
 
 First you have to register a user to the database.
-Click **addUser** > 1. go to body > 2. raw > 3.JSON > 4.add boy with user information:
+Click **addUser** > 1. go to body > 2. raw > 3.JSON > 4.add body with user information > 5 send:
+
+
 
 
 **Login** Run a login request by providing the username and password which you created while adding a user. It will generate a token > copy the token > go to getCourseById > header > 1. make a new key > 2. type Authorization > 3. add token > 4. write Bearer before token and click space  > click send > **now you can see the courses that are assigned to you.**
