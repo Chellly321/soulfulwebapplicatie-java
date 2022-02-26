@@ -3,6 +3,8 @@ package nl.novi.soulfullapplication.controller;
 import nl.novi.soulfullapplication.configuration.TokenUtil;
 import nl.novi.soulfullapplication.dto.LoginDto;
 import nl.novi.soulfullapplication.dto.Token;
+import org.springframework.http.HttpStatus;
+import nl.novi.soulfullapplication.model.User;
 import nl.novi.soulfullapplication.service.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,7 +12,6 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
@@ -46,11 +47,19 @@ public class UserControllerTest {
         //ASSERT
         Assertions.assertEquals(HttpStatus.OK, result.getStatusCode());
         Assertions.assertEquals(token, ((Token)result.getBody()).getToken());
-
-
-
-
-
     }
+//    @Test
+//    public void testRegister() {
+//        //ARRANGE
+//        User user = new User();
+//        Mockito.when(userService.save(any())).thenReturn(user);
+//
+//        //ACT
+//        User result = userController.registerUser(user);
+//
+//        //ASSERT
+//        Assertions.assertEquals(HttpStatus.OK, result.getStatusCode());
+//        Assertions.assertEquals(user, result.getBody());
+//    }
 
 }

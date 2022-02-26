@@ -19,14 +19,14 @@ public class RoleServiceTest {
     @Autowired
     RoleService roleService;
 
-//    @Test
-//    public void testRoleRepository() {
-//        String name = "Admin";
-//        Role role = new Role();
-//        Mockito.when(roleRepository.findRoleByName(name)).thenReturn(role);
-//
-//        Role result = roleRepository.findRoleByName("Admin");
-//
-//        Assertions.assertEquals("", result);
-//    }
+    @Test
+    public void testFindByName() {
+        String name = "Admin";
+        Role role = new Role();
+        Mockito.when(roleRepository.findRoleByName(name)).thenReturn(role);
+
+        Role result = roleRepository.findRoleByName("Admin");
+
+        Assertions.assertEquals("", result);
+    }
 }

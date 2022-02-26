@@ -4,7 +4,6 @@ import nl.novi.soulfullapplication.model.Course;
 import nl.novi.soulfullapplication.service.CourseService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

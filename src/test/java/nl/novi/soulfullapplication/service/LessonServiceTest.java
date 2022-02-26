@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.util.List;
 import java.util.Optional;
 import static org.mockito.ArgumentMatchers.any;
 
@@ -35,7 +36,7 @@ public class LessonServiceTest {
         Mockito.when(lessonRepository.findById(id)).thenReturn(Optional.of(lesson));
 
         //ACT
-        Lesson result = lessonRepository.findById(id).get();
+        Lesson result = lessonService.getLesson(id);
 
         //Assert
         Assertions.assertEquals(lesson, result);
@@ -58,11 +59,10 @@ public class LessonServiceTest {
 //    @Test
 //    public void testGetLessons() {
 //        long courseId = 1L;
-//        List<Lesson> lessons = new ArrayList<>();
-//        lessons.add((Lesson) lessons);
-//        Mockito.when(lessonRepository.findByCourse(any())).thenReturn(lessons);
+//        Lesson lessons = new Lesson();
+//        Mockito.when(lessonRepository.findByCourse(any())).thenReturn(Optional.of(cours));
 //        //ACT
-//        List<Lesson> result = lessonRepository.findByCourse(((Lesson) lessons).getCourse());
+//        List<Lesson> result = lessonService.getLessons(courseId).get();
 //
 //        //ASSERT
 //        Assertions.assertEquals(lessons, result);
@@ -80,11 +80,11 @@ public class LessonServiceTest {
 //    public void testAddLesson() {
 //        LessonDto lessonDto = new LessonDto();
 //        Lesson lesson = new Lesson();
-//        Mockito.when(lessonRepository.save(any())).thenReturn(Optional.of(lessonDto));
+//        Mockito.when(lessonRepository.save(any())).thenReturn(Optional.of(lesson));
 //
-//        Lesson result = lessonRepository.save(lesson);
+//        Lesson result = lessonService.addLesson(lessonDto);
 //
-//        Assertions.assertEquals(lesson, result);
+//        Assertions.assertEquals(lessonDto, result);
 //    }
 
     @Test
