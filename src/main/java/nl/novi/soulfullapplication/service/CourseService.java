@@ -6,6 +6,7 @@ import nl.novi.soulfullapplication.model.User;
 import nl.novi.soulfullapplication.repository.CourseRepository;
 import nl.novi.soulfullapplication.repository.PurchaseRepository;
 import nl.novi.soulfullapplication.repository.UserRepository;
+import org.aspectj.bridge.IMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;

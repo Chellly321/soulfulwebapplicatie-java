@@ -83,7 +83,7 @@ public class CourseServiceTest {
     }
 
     @Test
-    public void testBuyCourseWhenUserHasAlreadyBougthTheCourse() {
+    public void testBuyCourseWhenUserHasAlreadyBoughtTheCourse() {
         long userId = 1L;
         long courseId = 1L;
         Course course = new Course();

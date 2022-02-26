@@ -54,4 +54,6 @@ public class Course {
     public void setDuration(double duration) {
         this.duration = duration;
     }
+
+
 }
