@@ -7,6 +7,7 @@ import nl.novi.soulfullapplication.repository.CourseRepository;
 import nl.novi.soulfullapplication.repository.LessonRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,6 +28,13 @@ public class LessonServiceTest {
 
     @Autowired
     LessonService lessonService;
+
+    @Mock
+    Lesson newLesson;
+    @Mock
+    Course newCourse;
+    @Mock
+    LessonDto lessonDto;
 
     @Test
     public void testGetLesson() {
@@ -64,17 +72,15 @@ public class LessonServiceTest {
         //ASSERT
         Mockito.verify(lessonRepository).deleteById(1L);
     }
-//    @Test
-//    public void testAddLesson() {
-//        LessonDto lessonDto = new LessonDto();
-//        Course course = new Course();
-//        Lesson lesson = new Lesson();
-//        Mockito.when(lessonRepository.save(any())).thenReturn(lessonDto.getCourseId());
-//
-//        Lesson result = lessonService.addLesson(lessonDto);
-//
-//        Assertions.assertEquals("", result);
-//    }
+    @Test
+    public void testAddLesson() {
+        Mockito.when(courseRepository.findById(any())).thenReturn(Optional.of(newCourse));
+        Mockito.when(lessonRepository.save(any())).thenReturn(newLesson);
+
+        Lesson result = lessonService.addLesson(lessonDto);
+
+        Assertions.assertEquals(newLesson, result);
+    }
 
     @Test
     public void testAddLessonWhenCourseIdInvalid() {
