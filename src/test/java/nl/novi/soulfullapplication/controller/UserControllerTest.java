@@ -48,18 +48,18 @@ public class UserControllerTest {
         Assertions.assertEquals(HttpStatus.OK, result.getStatusCode());
         Assertions.assertEquals(token, ((Token)result.getBody()).getToken());
     }
-//    @Test
-//    public void testRegister() {
-//        //ARRANGE
-//        User user = new User();
-//        Mockito.when(userService.save(any())).thenReturn(user);
-//
-//        //ACT
-//        User result = userController.registerUser(user);
-//
-//        //ASSERT
-//        Assertions.assertEquals(HttpStatus.OK, result.getStatusCode());
-//        Assertions.assertEquals(user, result.getBody());
-//    }
+    @Test
+    public void testRegister() {
+        //ARRANGE
+        User user = new User();
+        Mockito.when(userService.save(any())).thenReturn(user);
+
+        //ACT
+        ResponseEntity<User> result = userController.registerUser(user);
+
+        //ASSERT
+        Assertions.assertEquals(HttpStatus.OK, result.getStatusCode());
+        Assertions.assertEquals(user, result.getBody());
+    }
 
 }

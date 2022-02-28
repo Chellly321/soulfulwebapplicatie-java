@@ -28,8 +28,8 @@ public class LessonController {
 
     @GetMapping("/lesson/bycourse/{courseId}")
     public ResponseEntity<List<Lesson>> getLessons(@PathVariable("courseId") long id) {
-        List<Lesson> lesson = lessonService.getLessons(id);
-        return ResponseEntity.ok(lesson);
+        List<Lesson> lessons = lessonService.getLessons(id);
+        return ResponseEntity.ok(lessons);
     }
 
     @DeleteMapping("/lesson/{id}")

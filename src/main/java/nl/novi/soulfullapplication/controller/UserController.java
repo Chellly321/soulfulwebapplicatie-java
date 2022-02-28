@@ -43,7 +43,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "users/register", method = RequestMethod.POST)
-    public User registerUser(@RequestBody User user) {
-        return userService.save(user);
+    public ResponseEntity<User> registerUser(@RequestBody User user) {
+        return ResponseEntity.ok(user);
     }
 }

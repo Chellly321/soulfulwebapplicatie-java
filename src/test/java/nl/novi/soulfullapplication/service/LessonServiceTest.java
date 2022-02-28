@@ -5,6 +5,7 @@ import nl.novi.soulfullapplication.model.Course;
 import nl.novi.soulfullapplication.model.Lesson;
 import nl.novi.soulfullapplication.repository.CourseRepository;
 import nl.novi.soulfullapplication.repository.LessonRepository;
+import org.checkerframework.checker.nullness.Opt;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -12,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import java.util.List;
 import java.util.Optional;
 import static org.mockito.ArgumentMatchers.any;
 
@@ -56,17 +56,6 @@ public class LessonServiceTest {
             Assertions.assertEquals("Wrong courseId", e.getMessage());
         }
     }
-//    @Test
-//    public void testGetLessons() {
-//        long courseId = 1L;
-//        Lesson lessons = new Lesson();
-//        Mockito.when(lessonRepository.findByCourse(any())).thenReturn(Optional.of(cours));
-//        //ACT
-//        List<Lesson> result = lessonService.getLessons(courseId).get();
-//
-//        //ASSERT
-//        Assertions.assertEquals(lessons, result);
-//    }
     @Test
     public void testDeleteLesson() {
         long id = 1L;
@@ -79,18 +68,18 @@ public class LessonServiceTest {
 //    @Test
 //    public void testAddLesson() {
 //        LessonDto lessonDto = new LessonDto();
+//        Course course = new Course();
 //        Lesson lesson = new Lesson();
-//        Mockito.when(lessonRepository.save(any())).thenReturn(Optional.of(lesson));
+//        Mockito.when(lessonRepository.save(any())).thenReturn(lessonDto.getCourseId());
 //
 //        Lesson result = lessonService.addLesson(lessonDto);
 //
-//        Assertions.assertEquals(lessonDto, result);
+//        Assertions.assertEquals("", result);
 //    }
 
     @Test
     public void testAddLessonWhenCourseIdInvalid() {
         LessonDto lessonDto = new LessonDto();
-        Lesson lesson = new Lesson();
         Course course = new Course();
         Mockito.when(courseRepository.findById(any())).thenReturn(Optional.of(course));
         Mockito.when(lessonRepository.save(any())).thenReturn(lessonDto);
