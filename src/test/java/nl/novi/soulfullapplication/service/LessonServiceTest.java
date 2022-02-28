@@ -5,7 +5,6 @@ import nl.novi.soulfullapplication.model.Course;
 import nl.novi.soulfullapplication.model.Lesson;
 import nl.novi.soulfullapplication.repository.CourseRepository;
 import nl.novi.soulfullapplication.repository.LessonRepository;
-import org.checkerframework.checker.nullness.Opt;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
