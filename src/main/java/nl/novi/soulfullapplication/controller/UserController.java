@@ -14,6 +14,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class UserController {
 
@@ -45,5 +47,16 @@ public class UserController {
     @RequestMapping(value = "users/register", method = RequestMethod.POST)
     public ResponseEntity<User> registerUser(@RequestBody User user) {
         return ResponseEntity.ok(user);
+    }
+    @GetMapping("users/")
+    public ResponseEntity<List<User>> findAll(@PathVariable User user){
+      List<User> users = userService.findAll();
+        return ResponseEntity.ok(users);
+    }
+
+    @DeleteMapping("/users/delete/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable long id){
+        userService.deleteUser(id);
+        return ResponseEntity.ok("User has been deleted!");
     }
 }

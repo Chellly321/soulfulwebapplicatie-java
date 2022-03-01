@@ -28,12 +28,12 @@ public class User {
                     @JoinColumn(name = "ROLE_ID")})
     private Set<Role> roles;
 
-    public Set<Role> getRoles() {
-        return roles;
+    public long getId() {
+        return id;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -50,14 +50,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -98,5 +90,13 @@ public class User {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

@@ -1,0 +1,468 @@
+{
+	"info": {
+		"_postman_id": "dffa94d9-afa4-471b-8b28-71e3e2e4ded6",
+		"name": "SoulfullApplication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "addCourse",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"courseName\": \"JAVA\",\n    \"price\": 30,\n    \"thumbnail\": \"https://www.google.com\",\n    \"duration\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/course",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"course"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addLesson",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Classes\",\n    \"videoLink\": \"youtubeLink\",\n    \"content\": \"Why classes are important\",\n    \"duration\": 1,\n    \"courseId\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/lesson",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lesson"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllCourses",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Classes\",\n    \"videoLink\": \"youtubeLink\",\n    \"content\": \"Why classes are important\",\n    \"duration\": 1,\n    \"courseId\": 2\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/mycourses",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mycourses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllLessons",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiUk9MRV9BRE1JTiIsImlhdCI6MTY0NjE0MjE0NCwiZXhwIjoxNjQ2MTYwMTQ0fQ.bfDw8dooJOxcrvt2IlFY0PJ3uCO4tFajoGHodstjRrQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Classes\",\n    \"videoLink\": \"youtubeLink\",\n    \"content\": \"Why classes are important\",\n    \"duration\": 1,\n    \"courseId\": 2\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/lesson/bycourse/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lesson",
+						"bycourse",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCourse",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/course/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"course",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteLesson",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/course/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"course",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buyCourse",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Classes\",\n    \"videoLink\": \"youtubeLink\",\n    \"content\": \"Why classes are important\",\n    \"duration\": 1,\n    \"courseId\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/course/buy?userid=5&courseid=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"course",
+						"buy"
+					],
+					"query": [
+						{
+							"key": "userid",
+							"value": "5"
+						},
+						{
+							"key": "courseid",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getLessonsByLessonId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Classes\",\n    \"videoLink\": \"youtubeLink\",\n    \"content\": \"Why classes are important\",\n    \"duration\": 1,\n    \"courseId\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/lesson/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lesson",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"michelle\",\n    \"password\": \"password123\",\n    \"firstName\": \"Michelle\",\n    \"lastName\": \"Royer\",\n    \"dateOfBirth\": \"2022-02-02\",\n    \"address\": \"abc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getLessonsByCourseId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Classes\",\n    \"videoLink\": \"youtubeLink\",\n    \"content\": \"Why classes are important\",\n    \"duration\": 1,\n    \"courseId\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/lesson/bycourse/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lesson",
+						"bycourse",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCourseById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiUk9MRV9BRE1JTiIsImlhdCI6MTY0NTgxOTY0MSwiZXhwIjoxNjQ1ODM3NjQxfQ.UTZLo6QoInrwEJF6-wQsbNyod9GE-oJnAkcaWWxV2SY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/course/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"course",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "viewMyPurchasedCourses",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Classes\",\n    \"videoLink\": \"youtubeLink\",\n    \"content\": \"Why classes are important\",\n    \"duration\": 1,\n    \"courseId\": 2\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/course/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"course",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Michelly\",\n    \"password\": \"Wachtwoord123\",\n    \"firstname\": \"Michelle\",\n    \"lastname\": \"Royer\",\n    \"datOfBirth\": \"1997-25-05\",\n    \"address\": \"Well Road 44\",\n    \"emailaddress\": \"michelle.royer@icloud.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/users/delete/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAllUsers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiUk9MRV9BRE1JTiIsImlhdCI6MTY0NjE0MjE0NCwiZXhwIjoxNjQ2MTYwMTQ0fQ.bfDw8dooJOxcrvt2IlFY0PJ3uCO4tFajoGHodstjRrQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
